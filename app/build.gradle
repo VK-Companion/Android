@@ -15,6 +15,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField "String", "API_URL", '"http://api-test.togezzer.net/v1/"'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -75,6 +78,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     compile 'ru.terrakok.cicerone:cicerone:1.2.1'
+    
+    compile 'com.vk:androidsdk:1.6.9'
 }
 repositories {
     mavenCentral()
