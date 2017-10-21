@@ -33,7 +33,7 @@ class ChatAdapter(private val messages: List<MessageModel>) : RecyclerView.Adapt
             with(itemView) {
                 if (!prevContains) {
                     name.visibility = View.VISIBLE
-                    name.text = "${model.from.firstName} + ${model.from.lastName}"
+                    name.text = "${model.from.firstName} ${model.from.lastName}"
                 } else {
                     name.visibility = View.INVISIBLE
                 }

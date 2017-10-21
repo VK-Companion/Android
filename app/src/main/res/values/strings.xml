@@ -9,6 +9,8 @@
 
     <string name="dialog_tittle">Dialogs</string>
 
+    <string name="permission_not_found">Локация необходима чтобы показывать растояние от каждого события. Это сделано, в первую очередь, для вашего удобства</string>
+    
     <array name="months_name">
         <item>янв</item>
         <item>фев</item>

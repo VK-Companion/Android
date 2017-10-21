@@ -84,6 +84,8 @@ dependencies {
 
     compile 'com.vk:androidsdk:1.6.9'
     compile 'me.grantland:autofittextview:0.2.1'
+    compile 'io.nlopez.smartlocation:rx:3.3.2'
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 }
 repositories {
     mavenCentral()
