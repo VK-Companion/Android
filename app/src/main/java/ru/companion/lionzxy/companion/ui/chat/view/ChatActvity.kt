@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import kotlinx.android.synthetic.main.activity_chat.*
@@ -31,14 +32,32 @@ class ChatActvity : MvpAppCompatActivity(), ChatView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-        presenter.loadMessage()
+        progressBarGlobal.visibility = View.VISIBLE
+        parent_ll.visibility = View.GONE
+        presenter.loadMessage(getDialog().id)
         toolbar.title = "${getDialog().user.firstName} ${getDialog().user.lastName}"
+        sendButton.setOnClickListener({
+            progressBar.visibility = View.VISIBLE
+            sendButton.visibility = View.GONE
+            presenter.send(getDialog().id, inputEdit.text.toString())
+        })
     }
 
     override fun onChatLoad(messages: List<MessageModel>) {
-        recyclerView.adapter = ChatAdapter(messages)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        progressBar.visibility = View.GONE
+        sendButton.visibility = View.VISIBLE
+        progressBarGlobal.visibility = View.GONE
+        parent_ll.visibility = View.VISIBLE
+        recyclerView.adapter = ChatAdapter(messages.reversed())
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        linearLayoutManager.stackFromEnd = true
+        recyclerView.layoutManager = linearLayoutManager
     }
 
     fun getDialog(): DialogModel = intent.getParcelableExtra(EXTRA_DIALOG)
+
+    override fun clearInput() {
+        inputEdit.text.clear()
+    }
 }

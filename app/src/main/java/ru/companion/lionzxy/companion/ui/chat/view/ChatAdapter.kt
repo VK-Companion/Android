@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.element_chat_message.view.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.data.models.MessageModel
@@ -17,7 +18,7 @@ class ChatAdapter(private val messages: List<MessageModel>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: MessageHolder, position: Int) {
-        holder.bind(messages[position], position != 0 && messages[position].from.id == messages[position - 1].from.id)
+        holder.bind(messages[position], position != 0 && messages[position].from.firstName == messages[position - 1].from.firstName)
     }
 
     class MessageHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -26,6 +27,7 @@ class ChatAdapter(private val messages: List<MessageModel>) : RecyclerView.Adapt
                 itemView.avatar.visibility = View.VISIBLE
                 Glide.with(itemView)
                         .load(model.from.photo)
+                        .apply(RequestOptions.circleCropTransform())
                         .into(itemView.avatar)
             } else {
                 itemView.avatar.visibility = View.INVISIBLE
