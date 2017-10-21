@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/vk_grey_color">
 
     <LinearLayout
         android:id="@+id/content"
@@ -10,18 +11,38 @@
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
-        <Button
+        <LinearLayout
             android:id="@+id/vk_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="КНОПКА" />
+            android:background="@drawable/round_button"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/vk" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="3dp"
+                android:layout_marginStart="12dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/vk_login"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

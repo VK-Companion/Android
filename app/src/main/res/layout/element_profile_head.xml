@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content"
+    android:layout_height="70dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ava"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ava" />
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ava"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/ava"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="25sp"
+        tools:text="Куликов Никита" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@id/profile_name"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@id/ava"
+        tools:text="Статус пользователя" />
+</RelativeLayout>

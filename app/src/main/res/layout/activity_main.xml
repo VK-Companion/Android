@@ -16,5 +16,7 @@
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        app:itemIconTint="@drawable/footer_color_selector"
+        app:itemTextColor="@drawable/footer_color_selector"
         app:menu="@menu/bottom_menu" />
 </LinearLayout>

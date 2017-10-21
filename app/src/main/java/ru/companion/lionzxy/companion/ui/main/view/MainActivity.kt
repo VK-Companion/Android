@@ -1,14 +1,16 @@
-package ru.companion.lionzxy.companion.ui.events.view
+package ru.companion.lionzxy.companion.ui.main.view
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.togezzer.android.utils.navigation.BaseNavigator
+import com.togezzer.android.utils.navigation.CompanionRouter
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.app.App
-import ru.companion.lionzxy.companion.ui.events.presenter.MainPresenter
+import ru.companion.lionzxy.companion.ui.main.presenter.MainPresenter
+import ru.companion.lionzxy.companion.ui.profile.view.ProfileFragment
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
@@ -19,9 +21,12 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     @Inject
     lateinit var navigationHolder: NavigatorHolder
 
-    private var navigator = object : BaseNavigator(this, R.id.container) {
+    private var navigator = object : BaseNavigator(this, R.id.content) {
         override fun createFragment(screenKey: String?, data: Any?): Fragment? {
-            return super.createFragment(screenKey, data)
+            return when (screenKey) {
+                CompanionRouter.Screens.FRAGMENT_PROFILE -> ProfileFragment()
+                else -> super.createFragment(screenKey, data)
+            }
         }
     }
 

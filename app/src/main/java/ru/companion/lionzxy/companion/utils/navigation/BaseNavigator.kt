@@ -3,7 +3,7 @@ package com.togezzer.android.utils.navigation
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import ru.companion.lionzxy.companion.ui.events.view.MainActivity
+import ru.companion.lionzxy.companion.ui.main.view.MainActivity
 import ru.companion.lionzxy.companion.ui.login.view.LoginActivity
 import ru.terrakok.cicerone.android.SupportAppNavigator
 

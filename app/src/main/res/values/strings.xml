@@ -3,6 +3,9 @@
     <string name="menu_feed">Feed</string>
     <string name="menu_dialogs">Dialogs</string>
     <string name="menu_profile">Profile</string>
+    <string name="vk_login">Войти через Вконтакте</string>
+    <string name="profile_not_found_event">У вас пока нет активностей. Попробуйте пригласить кого-то на событие.</string>
+    <string name="profile_not_found_empty">Тут пусто ;)</string>
 
     <array name="months_name">
         <item>янв</item>

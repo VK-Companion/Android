@@ -80,7 +80,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     compile 'ru.terrakok.cicerone:cicerone:1.2.1'
-    
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+
     compile 'com.vk:androidsdk:1.6.9'
     compile 'me.grantland:autofittextview:0.2.1'
 }
