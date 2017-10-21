@@ -1,13 +1,17 @@
 package ru.companion.lionzxy.companion.utils
 
 import android.app.Activity
+import android.content.Context
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import ru.companion.lionzxy.companion.R
 import java.io.UnsupportedEncodingException
 import java.net.URL
 import java.net.URLDecoder
+import java.util.*
 
 
 fun Activity.toast(text: String) {
@@ -28,3 +32,14 @@ fun URL.splitQuery(): Map<String, String> {
     }
     return queryPairs
 }
+
+fun Date.toDay(): Int = Integer.parseInt(DateFormat.format("dd", this) as String)
+
+
+fun Date.toMonth(): Int {
+    val calendar = Calendar.getInstance()
+    calendar.time = this
+    return calendar.get(Calendar.MONTH)
+}
+
+fun Date.toMonthString(c: Context): String = c.resources.getStringArray(R.array.months_name)[toMonth()]

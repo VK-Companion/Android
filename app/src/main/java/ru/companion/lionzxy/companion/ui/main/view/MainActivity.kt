@@ -13,6 +13,7 @@ import ru.companion.lionzxy.companion.app.App
 import ru.companion.lionzxy.companion.data.models.DialogModel
 import ru.companion.lionzxy.companion.ui.chat.view.ChatActvity
 import ru.companion.lionzxy.companion.ui.dialogs.view.DialogFragment
+import ru.companion.lionzxy.companion.ui.events.view.EventFragment
 import ru.companion.lionzxy.companion.ui.main.presenter.MainPresenter
 import ru.companion.lionzxy.companion.ui.profile.view.ProfileFragment
 import ru.terrakok.cicerone.NavigatorHolder
@@ -30,7 +31,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             return when (screenKey) {
                 CompanionRouter.Screens.FRAGMENT_PROFILE -> ProfileFragment()
                 CompanionRouter.Screens.FRAGMENT_DIALOGS -> DialogFragment()
-                CompanionRouter.Screens.FRAGMENT_FEED -> ProfileFragment()
+                CompanionRouter.Screens.FRAGMENT_FEED -> EventFragment()
                 else -> super.createFragment(screenKey, data)
             }
         }
@@ -48,6 +49,10 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         setContentView(R.layout.activity_main)
 
         App.appComponent.inject(this)
+
+        if(savedInstanceState == null){
+            presenter.openFragment(CompanionRouter.Screens.FRAGMENT_FEED)
+        }
 
         footer.setOnNavigationItemSelectedListener {
             val selectedItem = footer.menu.findItem(footer.selectedItemId)

@@ -5,7 +5,6 @@
     android:id="@+id/parent_ll"
     android:layout_width="match_parent"
     android:layout_height="130dp"
-    android:background="@color/vk_black"
     android:orientation="horizontal"
     android:weightSum="20"
     tools:ignore="missingPrefix">
@@ -36,13 +35,13 @@
             tools:text="ноя" />
 
         <me.grantland.widget.AutofitTextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:ellipsize="end"
             android:gravity="bottom"
             android:maxLines="2"
-            android:singleLine="true"
             android:textColor="@android:color/white"
             android:textSize="40sp"
             app:minTextSize="16sp"
@@ -52,18 +51,26 @@
     <RelativeLayout
         android:layout_width="0px"
         android:layout_height="match_parent"
-        android:layout_weight="13"
-        android:background="@android:color/holo_red_dark">
+        android:layout_weight="13">
+
+        <ru.companion.lionzxy.companion.utils.ScaleImageView
+            android:id="@+id/eventImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+
         <TextView
-            android:layout_marginBottom="8dp"
+            android:id="@+id/direction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            tools:text="500 метров"
-            android:padding="5dp"
-            android:gravity="center"
-            android:textColor="@android:color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="8dp"
             android:background="@color/vk_color"
-            android:layout_alignParentEnd="true"/>
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@android:color/white"
+            tools:text="500 метров" />
     </RelativeLayout>
 </LinearLayout>

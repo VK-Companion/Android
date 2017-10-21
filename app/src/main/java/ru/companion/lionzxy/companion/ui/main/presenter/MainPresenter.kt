@@ -18,7 +18,7 @@ class MainPresenter : MvpPresenter<MainView>() {
         App.appComponent.inject(this)
     }
 
-    private fun openFragment(screenKey: String?) {
+    fun openFragment(screenKey: String?) {
         router.replaceScreen(screenKey)
     }
 
