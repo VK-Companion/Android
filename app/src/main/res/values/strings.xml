@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Companion</string>
+    <string name="menu_feed">Feed</string>
+    <string name="menu_dialogs">Dialogs</string>
+    <string name="menu_profile">Profile</string>
+
+    <array name="months_name">
+        <item>янв</item>
+        <item>фев</item>
+        <item>мар</item>
+        <item>апр</item>
+        <item>май</item>
+        <item>июн</item>
+        <item>июл</item>
+        <item>авг</item>
+        <item>сен</item>
+        <item>окт</item>
+        <item>ноя</item>
+        <item>дек</item>
+    </array>
 </resources>

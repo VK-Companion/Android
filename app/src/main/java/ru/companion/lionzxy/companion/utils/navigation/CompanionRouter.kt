@@ -7,7 +7,11 @@ class CompanionRouter : Router() {
     object Screens {
         const val SPLASH_ACTIVITY = "splash_activity"
         const val LOGIN_ACTIVITY = "login_activity"
+        const val MAIN_ACTIVITY = "main_activity"
 
+        const val FRAGMENT_FEED = "feed_fragment"
+        const val FRAGMENT_DIALOGS = "dialogs_fragment"
+        const val FRAGMENT_PROFILE = "profile_fragment"
     }
 
     fun openLoginScreen() {
@@ -15,8 +19,7 @@ class CompanionRouter : Router() {
     }
 
     fun openMainActivity() {
-        //TODO
-        newRootScreen(Screens.SPLASH_ACTIVITY)
+        newRootScreen(Screens.MAIN_ACTIVITY)
     }
 
 }

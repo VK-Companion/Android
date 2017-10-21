@@ -1,5 +1,6 @@
 package ru.companion.lionzxy.companion.dagger.app
 
+import android.arch.persistence.room.Room
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
@@ -12,6 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.companion.lionzxy.companion.BuildConfig
+import ru.companion.lionzxy.companion.data.db.CompanionDatabase
 import timber.log.Timber
 import javax.inject.Singleton
 
@@ -52,4 +54,9 @@ class AppModule(val context: Context) {
                 .client(client)
                 .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideDb(context: Context): CompanionDatabase
+            = Room.databaseBuilder(context, CompanionDatabase::class.java, "companion_db").build()
 }

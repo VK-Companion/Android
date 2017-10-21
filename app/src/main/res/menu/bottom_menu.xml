@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/feed"
+        android:title="@string/menu_feed" />
+    <item
+        android:id="@+id/dialogs"
+        android:title="@string/menu_dialogs" />
+    <item
+        android:id="@+id/profile"
+        android:title="@string/menu_profile" />
+</menu>
