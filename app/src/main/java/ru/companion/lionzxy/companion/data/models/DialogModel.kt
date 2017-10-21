@@ -2,16 +2,21 @@ package ru.companion.lionzxy.companion.data.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
-data class DialogModel(val id: Int,
-                       val messsage: String,
-                       val user: UserProfile) : Parcelable {
-    constructor() : this(0, "", UserProfile())
+data class DialogModel(
+        @SerializedName("peer_id")
+        var id: Int,
+        @SerializedName("text")
+        var messsage: String,
+        @SerializedName("user_peer")
+        var user: DialogUser) : Parcelable {
+    constructor() : this(0, "", DialogUser())
 
     constructor(source: Parcel) : this(
             source.readInt(),
             source.readString(),
-            source.readParcelable<UserProfile>(UserProfile::class.java.classLoader)
+            source.readParcelable<DialogUser>(DialogUser::class.java.classLoader)
     )
 
     override fun describeContents() = 0

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.element_dialog.view.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.data.models.DialogModel
@@ -29,6 +30,7 @@ class DialogAdapter(private val dialogs: List<DialogModel>,
                 name.text = "${dialog.user.firstName} ${dialog.user.lastName}"
                 Glide.with(itemView)
                         .load(dialog.user.photo)
+                        .apply(RequestOptions.circleCropTransform())
                         .into(avatar)
                 setOnClickListener { listener(dialog) }
             }

@@ -5,7 +5,7 @@ import ru.companion.lionzxy.companion.dagger.auth.AuthScope
 import ru.companion.lionzxy.companion.ui.dialogs.presenter.DialogPresenter
 
 @Subcomponent(modules = arrayOf(MessageModule::class))
-@AuthScope
+@MessageScope
 interface MessageComponent {
     fun inject(presenter: DialogPresenter)
 }

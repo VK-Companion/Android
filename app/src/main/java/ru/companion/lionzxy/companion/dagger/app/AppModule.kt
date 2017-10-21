@@ -15,6 +15,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.companion.lionzxy.companion.BuildConfig
 import ru.companion.lionzxy.companion.data.db.CompanionDatabase
+import ru.companion.lionzxy.companion.data.network.AddTokenInterceptor
 import timber.log.Timber
 import javax.inject.Singleton
 
@@ -30,11 +31,12 @@ class AppModule(val context: Context) {
 
     @Singleton
     @Provides
-    fun provideClient(): OkHttpClient {
+    fun provideClient(prefs: SharedPreferences): OkHttpClient {
         val logging = HttpLoggingInterceptor(
                 HttpLoggingInterceptor.Logger { message -> Timber.d(message) }
         )
         return OkHttpClient.Builder()
+                .addInterceptor(AddTokenInterceptor(prefs))
                 .addInterceptor(logging)
                 .build()
     }
