@@ -7,16 +7,11 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.togezzer.android.utils.navigation.BaseNavigator
 import com.togezzer.android.utils.navigation.CompanionRouter
-import com.vk.sdk.VKAccessToken
-import com.vk.sdk.VKCallback
-import com.vk.sdk.VKSdk
-import com.vk.sdk.api.VKError
 import kotlinx.android.synthetic.main.activity_login.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.app.App
 import ru.companion.lionzxy.companion.ui.login.presenter.LoginPresenter
 import ru.companion.lionzxy.companion.ui.vk.view.LoginVkActivity
-import ru.companion.lionzxy.companion.utils.toast
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
@@ -46,14 +41,10 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
         vk_login.setOnClickListener { presenter.openVkLogin() }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        // TODO
-    }
-
     override fun onResume() {
         super.onResume()
         navigationHolder.setNavigator(navigator)
+        presenter.checkAndOpen()
     }
 
     override fun onPause() {

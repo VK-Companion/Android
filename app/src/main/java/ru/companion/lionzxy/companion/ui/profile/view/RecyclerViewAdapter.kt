@@ -3,6 +3,8 @@ package ru.companion.lionzxy.companion.ui.profile.view
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.element_action.view.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.data.models.ActionModel
@@ -61,8 +63,11 @@ class RecyclerViewAdapter(private var user: UserProfile) : RecyclerView.Adapter<
 
     class ProfileViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(user: UserProfile) {
-            //TODO avatar
             with(itemView) {
+                Glide.with(itemView)
+                        .load(user.photo)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(ava)
                 profile_name.text = "${user.firstName} ${user.lastName}"
                 status.text = user.status
             }

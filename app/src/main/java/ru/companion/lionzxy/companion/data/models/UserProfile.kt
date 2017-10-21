@@ -11,7 +11,9 @@ data class UserProfile(
         var lastName: String,
         @SerializedName("token")
         var token: String,
+        @SerializedName("photo")
+        var photo: String,
         @SerializedName("status")
         var status: String = "") {
-    constructor() : this(0, "", "", "")
+    constructor() : this(0, "", "", "", "")
 }

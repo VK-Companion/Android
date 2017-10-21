@@ -17,6 +17,7 @@ class AuthRepository(private val preferences: SharedPreferences,
         const val FNAME_PREFS = "first_name"
         const val LNAME_PREFS = "last_name"
         const val STATUS_PREFS = "status"
+        const val PHOTO_PREFS = "photo"
     }
 
     override fun getUser(): UserProfile {
@@ -24,6 +25,7 @@ class AuthRepository(private val preferences: SharedPreferences,
                 preferences.getString(FNAME_PREFS, ""),
                 preferences.getString(LNAME_PREFS, ""),
                 preferences.getString(TOKEN_PREFS, ""),
+                preferences.getString(PHOTO_PREFS, ""),
                 preferences.getString(STATUS_PREFS, ""))
     }
 
@@ -41,6 +43,7 @@ class AuthRepository(private val preferences: SharedPreferences,
                 .putInt(USERID_PREFS, user.id)
                 .putString(FNAME_PREFS, user.firstName)
                 .putString(LNAME_PREFS, user.lastName)
+                .putString(PHOTO_PREFS, user.photo)
                 .putString(STATUS_PREFS, user.status)
                 .apply()
     }

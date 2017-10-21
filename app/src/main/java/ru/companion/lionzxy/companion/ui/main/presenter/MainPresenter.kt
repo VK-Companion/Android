@@ -31,6 +31,7 @@ class MainPresenter : MvpPresenter<MainView>() {
                 return false
             }
         }
+
         return true
     }
 }

@@ -28,7 +28,7 @@ class LoginVkPresenter : MvpPresenter<LoginVkView>() {
         interactor.auth(code)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    router.openMainActivity()
+                    router.exitWithMessage(code)
                 }, Timber::e)
     }
 }
