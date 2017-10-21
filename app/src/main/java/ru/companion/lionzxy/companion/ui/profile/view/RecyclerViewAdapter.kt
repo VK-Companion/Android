@@ -63,7 +63,7 @@ class RecyclerViewAdapter(private var user: UserProfile) : RecyclerView.Adapter<
         fun bind(user: UserProfile) {
             //TODO avatar
             with(itemView) {
-                profile_name.text = user.fullname
+                profile_name.text = "${user.firstName} ${user.lastName}"
                 status.text = user.status
             }
         }

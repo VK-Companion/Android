@@ -11,6 +11,7 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import ru.companion.lionzxy.companion.BuildConfig
 import ru.companion.lionzxy.companion.data.db.CompanionDatabase
@@ -51,6 +52,7 @@ class AppModule(val context: Context) {
         return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(BuildConfig.API_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .build()
     }

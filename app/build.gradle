@@ -8,7 +8,7 @@ android {
     buildToolsVersion "26.0.1"
     defaultConfig {
         applicationId "ru.companion.lionzxy.companion"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -16,7 +16,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "API_URL", '"http://api-test.togezzer.net/v1/"'
+            buildConfigField "String", "API_URL", '"http://vk-events.lumanov.ru:8011/"'
         }
         release {
             minifyEnabled false

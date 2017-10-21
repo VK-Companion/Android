@@ -25,6 +25,8 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         override fun createFragment(screenKey: String?, data: Any?): Fragment? {
             return when (screenKey) {
                 CompanionRouter.Screens.FRAGMENT_PROFILE -> ProfileFragment()
+                CompanionRouter.Screens.FRAGMENT_DIALOGS -> ProfileFragment()
+                CompanionRouter.Screens.FRAGMENT_FEED -> ProfileFragment()
                 else -> super.createFragment(screenKey, data)
             }
         }

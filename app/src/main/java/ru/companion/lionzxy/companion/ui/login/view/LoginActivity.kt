@@ -6,6 +6,7 @@ import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.togezzer.android.utils.navigation.BaseNavigator
+import com.togezzer.android.utils.navigation.CompanionRouter
 import com.vk.sdk.VKAccessToken
 import com.vk.sdk.VKCallback
 import com.vk.sdk.VKSdk
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.app.App
 import ru.companion.lionzxy.companion.ui.login.presenter.LoginPresenter
+import ru.companion.lionzxy.companion.ui.vk.view.LoginVkActivity
 import ru.companion.lionzxy.companion.utils.toast
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
@@ -26,29 +28,27 @@ class LoginActivity : MvpAppCompatActivity(), LoginView {
     @Inject
     lateinit var navigationHolder: NavigatorHolder
 
-    private var navigator = BaseNavigator(this, 0)
+    private var navigator = object : BaseNavigator(this, 0) {
+        override fun createActivityIntent(screenKey: String?, data: Any?): Intent? {
+            return when (screenKey) {
+                CompanionRouter.Screens.LOGINVK_ACTIVITY -> {
+                    Intent(this@LoginActivity, LoginVkActivity::class.java)
+                }
+                else -> super.createActivityIntent(screenKey, data)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         App.appComponent.inject(this)
-        vk_login.setOnClickListener { VKSdk.login(this@LoginActivity) }
+        vk_login.setOnClickListener { presenter.openVkLogin() }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (VKSdk.onActivityResult(requestCode, resultCode, data, object : VKCallback<VKAccessToken> {
-            override fun onResult(res: VKAccessToken) {
-                presenter.onVkApiTokenGet(res.accessToken)
-            }
-
-            override fun onError(error: VKError) {
-                toast(error.toString())
-            }
-
-        })) else {
-            super.onActivityResult(requestCode, resultCode, data)
-        }
+        // TODO
     }
 
     override fun onResume() {
