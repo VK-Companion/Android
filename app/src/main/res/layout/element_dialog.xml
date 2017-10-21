@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingBottom="8dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="12dp">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ava" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/avatar"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="4sp"
+        android:lines="1"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="KTS Studio" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_marginStart="48dp"
+        android:clickable="false"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.02"
+        android:lineSpacingExtra="3sp"
+        android:longClickable="true"
+        android:textColor="@android:color/black"
+        android:textIsSelectable="true"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        tools:text="Да, абсолютно jdlasjlkd jasljdlasjdlas " />
+</RelativeLayout>

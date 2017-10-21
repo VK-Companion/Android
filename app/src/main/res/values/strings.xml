@@ -7,6 +7,8 @@
     <string name="profile_not_found_event">У вас пока нет активностей. Попробуйте пригласить кого-то на событие.</string>
     <string name="profile_not_found_empty">Тут пусто ;)</string>
 
+    <string name="dialog_tittle">Dialogs</string>
+
     <array name="months_name">
         <item>янв</item>
         <item>фев</item>

@@ -1,5 +1,6 @@
 package ru.companion.lionzxy.companion.ui.main.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -9,6 +10,9 @@ import com.togezzer.android.utils.navigation.CompanionRouter
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.app.App
+import ru.companion.lionzxy.companion.data.models.DialogModel
+import ru.companion.lionzxy.companion.ui.chat.view.ChatActvity
+import ru.companion.lionzxy.companion.ui.dialogs.view.DialogFragment
 import ru.companion.lionzxy.companion.ui.main.presenter.MainPresenter
 import ru.companion.lionzxy.companion.ui.profile.view.ProfileFragment
 import ru.terrakok.cicerone.NavigatorHolder
@@ -25,9 +29,16 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         override fun createFragment(screenKey: String?, data: Any?): Fragment? {
             return when (screenKey) {
                 CompanionRouter.Screens.FRAGMENT_PROFILE -> ProfileFragment()
-                CompanionRouter.Screens.FRAGMENT_DIALOGS -> ProfileFragment()
+                CompanionRouter.Screens.FRAGMENT_DIALOGS -> DialogFragment()
                 CompanionRouter.Screens.FRAGMENT_FEED -> ProfileFragment()
                 else -> super.createFragment(screenKey, data)
+            }
+        }
+
+        override fun createActivityIntent(screenKey: String?, data: Any?): Intent? {
+            return when(screenKey) {
+                CompanionRouter.Screens.CHAT_ACTIVITY -> ChatActvity.getIntent(this@MainActivity, data as DialogModel)
+                else -> super.createActivityIntent(screenKey, data)
             }
         }
     }
