@@ -11,8 +11,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.app.App
 import ru.companion.lionzxy.companion.data.models.DialogModel
+import ru.companion.lionzxy.companion.data.models.EventModel
 import ru.companion.lionzxy.companion.ui.chat.view.ChatActvity
 import ru.companion.lionzxy.companion.ui.dialogs.view.DialogFragment
+import ru.companion.lionzxy.companion.ui.event_info.view.EventActivity
 import ru.companion.lionzxy.companion.ui.events.view.EventFragment
 import ru.companion.lionzxy.companion.ui.main.presenter.MainPresenter
 import ru.companion.lionzxy.companion.ui.profile.view.ProfileFragment
@@ -37,8 +39,9 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         }
 
         override fun createActivityIntent(screenKey: String?, data: Any?): Intent? {
-            return when(screenKey) {
+            return when (screenKey) {
                 CompanionRouter.Screens.CHAT_ACTIVITY -> ChatActvity.getIntent(this@MainActivity, data as DialogModel)
+                CompanionRouter.Screens.EVENT_ACTIVITY -> EventActivity.getIntent(this@MainActivity, data as EventModel)
                 else -> super.createActivityIntent(screenKey, data)
             }
         }
@@ -50,7 +53,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
         App.appComponent.inject(this)
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             presenter.openFragment(CompanionRouter.Screens.FRAGMENT_FEED)
         }
 

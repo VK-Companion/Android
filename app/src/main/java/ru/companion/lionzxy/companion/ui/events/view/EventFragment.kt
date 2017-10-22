@@ -40,7 +40,9 @@ class EventFragment : MvpAppCompatFragment(), EventView {
         recyclerView.visibility = View.VISIBLE
 
         if (adapter == null) {
-            adapter = EventAdapter(events)
+            adapter = EventAdapter(events, {
+                presenter.openEvent(it)
+            })
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(activity)
         } else {

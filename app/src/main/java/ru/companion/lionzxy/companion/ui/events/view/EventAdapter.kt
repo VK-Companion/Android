@@ -1,12 +1,9 @@
 package ru.companion.lionzxy.companion.ui.events.view
 
-import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
-import com.bumptech.glide.request.transition.Transition
 import kotlinx.android.synthetic.main.element_event.view.*
 import ru.companion.lionzxy.companion.R
 import ru.companion.lionzxy.companion.data.models.EventModel
@@ -14,9 +11,10 @@ import ru.companion.lionzxy.companion.utils.inflate
 import ru.companion.lionzxy.companion.utils.toDay
 import ru.companion.lionzxy.companion.utils.toMonthString
 
-class EventAdapter(private var events: List<EventModel>) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
+class EventAdapter(private var events: List<EventModel>,
+                   private var listener: (model: EventModel) -> Unit) : RecyclerView.Adapter<EventAdapter.EventHolder>() {
     override fun onBindViewHolder(holder: EventHolder?, position: Int) {
-        holder?.bind(events[position])
+        holder?.bind(events[position], listener)
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +26,7 @@ class EventAdapter(private var events: List<EventModel>) : RecyclerView.Adapter<
     }
 
     class EventHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(event: EventModel) {
+        fun bind(event: EventModel, listener: (model: EventModel) -> Unit) {
             with(itemView) {
                 parent_ll.setBackgroundColor(event.color)
                 date_number.text = event.date.toDay().toString()
@@ -39,6 +37,7 @@ class EventAdapter(private var events: List<EventModel>) : RecyclerView.Adapter<
                 } else {
                     direction.text = "${event.distance} м"
                 }
+                setOnClickListener({ listener(event) })
             }
             Glide.with(itemView)
                     .asBitmap()
