@@ -7,6 +7,7 @@
     android:layout_height="130dp"
     android:orientation="horizontal"
     android:weightSum="20"
+    android:layout_marginBottom="4dp"
     tools:ignore="missingPrefix">
 
     <RelativeLayout
@@ -34,17 +35,16 @@
             android:textSize="15sp"
             tools:text="ноя" />
 
-        <me.grantland.widget.AutofitTextView
+        <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
             android:ellipsize="end"
             android:gravity="bottom"
             android:maxLines="2"
             android:textColor="@android:color/white"
-            android:textSize="40sp"
-            app:minTextSize="16sp"
+            android:textSize="16sp"
             tools:text="Евгений Онегин" />
     </RelativeLayout>
 

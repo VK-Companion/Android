@@ -3,6 +3,7 @@ package ru.companion.lionzxy.companion.ui.events.view
 import android.Manifest
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -43,8 +44,13 @@ class EventFragment : MvpAppCompatFragment(), EventView {
             adapter = EventAdapter(events, {
                 presenter.openEvent(it)
             })
+
+            val llm = LinearLayoutManager(activity)
+            val decorator = DividerItemDecoration(activity, llm.orientation)
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = LinearLayoutManager(activity)
+            recyclerView.layoutManager = llm
+
+            recyclerView.addItemDecoration(decorator)
         } else {
             adapter!!.plusEvents(events)
         }

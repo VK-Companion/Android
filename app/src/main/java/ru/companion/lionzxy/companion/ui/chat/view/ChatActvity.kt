@@ -3,6 +3,7 @@ package ru.companion.lionzxy.companion.ui.chat.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -37,6 +38,9 @@ class ChatActvity : MvpAppCompatActivity(), ChatView {
         presenter.loadMessage(getDialog().id)
         toolbar.title = "${getDialog().user.firstName} ${getDialog().user.lastName}"
         sendButton.setOnClickListener({
+            if (inputEdit.text.isEmpty()) {
+                return@setOnClickListener
+            }
             progressBar.visibility = View.VISIBLE
             sendButton.visibility = View.GONE
             presenter.send(getDialog().id, inputEdit.text.toString())
@@ -48,7 +52,14 @@ class ChatActvity : MvpAppCompatActivity(), ChatView {
         sendButton.visibility = View.VISIBLE
         progressBarGlobal.visibility = View.GONE
         parent_ll.visibility = View.VISIBLE
-        recyclerView.adapter = ChatAdapter(messages.reversed())
+        recyclerView.adapter = ChatAdapter(messages.reversed(), {
+            val dialog = AlertDialog.Builder(this)
+                    .setMessage(R.string.pay_request)
+                    .setPositiveButton(R.string.buy, { dialog, _ ->
+                        dialog.dismiss()
+                    }).create()
+            dialog.show()
+        })
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         linearLayoutManager.stackFromEnd = true

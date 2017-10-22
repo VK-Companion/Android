@@ -39,10 +39,17 @@ class EventAdapter(private var events: List<EventModel>,
                 }
                 setOnClickListener({ listener(event) })
             }
-            Glide.with(itemView)
-                    .asBitmap()
-                    .load(event.img_url)
-                    .into(itemView.eventImage)
+            if (event.img_url == null) {
+                Glide.with(itemView)
+                        .asBitmap()
+                        .load(event.alternativeUrl)
+                        .into(itemView.eventImage)
+            } else {
+                Glide.with(itemView)
+                        .asBitmap()
+                        .load(event.img_url)
+                        .into(itemView.eventImage)
+            }
         }
     }
 

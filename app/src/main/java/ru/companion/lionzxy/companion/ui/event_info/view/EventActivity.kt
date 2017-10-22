@@ -3,6 +3,7 @@ package ru.companion.lionzxy.companion.ui.event_info.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.arellomobile.mvp.MvpAppCompatActivity
@@ -38,6 +39,14 @@ class EventActivity : MvpAppCompatActivity(), EventView {
         titleText.text = getEvent().name
         progressBar.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
+        presenter.onLoad()
+
+        val dialog = AlertDialog.Builder(this)
+                .setMessage(R.string.event_recomendation)
+                .setPositiveButton(android.R.string.ok, { dialog, _ ->
+                    dialog.dismiss()
+                }).create()
+        dialog.show()
     }
 
     fun getEvent() = intent.getSerializableExtra(EXTRA_EVENT) as EventModel

@@ -7,4 +7,5 @@ import ru.companion.lionzxy.companion.ui.events.presenter.EventPresenter
 @EventScope
 interface EventComponent {
     fun inject(presenter: EventPresenter)
+    fun inject(presenter: ru.companion.lionzxy.companion.ui.event_info.presenter.EventPresenter)
 }

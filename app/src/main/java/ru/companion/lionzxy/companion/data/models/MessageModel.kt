@@ -8,6 +8,8 @@ data class MessageModel(
         @SerializedName("text")
         var message: String,
         @SerializedName("user_sender")
-        var from: DialogUser) {
-    constructor() : this(0, "", DialogUser())
+        var from: DialogUser,
+        @SerializedName("attachments")
+        var attachment: String) {
+    constructor() : this(0, "", DialogUser(), "")
 }

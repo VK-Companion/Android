@@ -10,7 +10,12 @@
     <string name="dialog_tittle">Dialogs</string>
 
     <string name="permission_not_found">Локация необходима чтобы показывать растояние от каждого события. Это сделано, в первую очередь, для вашего удобства</string>
-    
+
+    <string name="event_recomendation" formatted="false">Вы активировали реферальную программу этого события!) Уря! Теперь, если вы пойдете с другом, вас ждет скидка от 20% до 60%!</string>
+
+    <string name="pay_request">Ваш собеседник хочет купить совместно билет. Скидка с учетом реферальной программы: 20%</string>
+    <string name="buy">Купить</string>
+
     <array name="months_name">
         <item>янв</item>
         <item>фев</item>

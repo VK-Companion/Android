@@ -35,7 +35,7 @@ class EventPresenter : MvpPresenter<EventView>() {
     }
 
     fun loadEvent() {
-        Single.just(listOf(EventModel(0, Color.BLUE, 1001, "Хакатон Вконтакте", "https://i.imgur.com/YpPw1hN.jpg", Date())))
+        eventInteractor.getEvents()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     viewState.plusEvents(it)
